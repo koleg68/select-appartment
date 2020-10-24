@@ -75,25 +75,16 @@ function insertAfter(elem, refElem) {
 
 let images = document.querySelectorAll('.img');
 
-function showImage1() {
-   for (let i = 0; i < images.length; i++) {
-      images[i].addEventListener('click', (e) => {
-         if (images[i] == e.target) {
-            images[i].src = '/img/star_bg.png';
-            images[i].classList.add('changeImage');
-         }
-      })
-   }
+for (let i = 0; i < images.length; i++) {
+   images[i].addEventListener('click', (e) => {
+      if (images[i] == e.target &&
+         (!images[i].classList.contains('changeImage'))) {
+         images[i].src = '/img/star_bg.png';
+         images[i].classList.add('changeImage');
+      } else if (images[i] == e.target &&
+         (images[i].classList.contains('changeImage'))) {
+         images[i].src = '/img/star.png';
+         images[i].classList.remove('changeImage');
+      }
+   })
 }
-showImage1();
-
-function showImage2() {
-   for (let i = 0; i < images.length; i++) {
-      images[i].addEventListener('click', (e) => {
-         if (images[i] == e.target) {
-            images[i].src = '/img/star.png';
-         }
-      })
-   }
-}
-showImage2();
