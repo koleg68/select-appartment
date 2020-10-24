@@ -96,4 +96,4 @@ function showImage2() {
       })
    }
 }
-// showImage2();
+showImage2();
