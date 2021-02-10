@@ -74,9 +74,10 @@ function insertAfter(elem, refElem) {
 // ================ выбор и отмена избранного =========== //
 
 let images = document.querySelectorAll('.img');
-
+let count = 0;
 for (let i = 0; i < images.length; i++) {
    images[i].addEventListener('click', (e) => {
+
       if (images[i] == e.target &&
          (!images[i].classList.contains('changeImage'))) {
          images[i].src = '/img/star_bg.png';
@@ -88,3 +89,48 @@ for (let i = 0; i < images.length; i++) {
       }
    })
 }
+
+
+let btnFavorites = document.querySelector('button.favorites');
+
+function btnActivityOnOff() {
+   return (count == 0) ? btnFavorites.classList.add('btn-disabled') : btnFavorites.classList.remove('btn-disabled');
+}
+btnActivityOnOff();
+
+
+btnFavorites.addEventListener('click', function () {
+
+   if (btnFavorites.classList.contains('btn-disabled')) {
+      alert('нужно что-то выбрать');
+   } else {
+      for (let i = 0; i < images.length; i++) {
+         
+         if (!images[i].classList.contains('changeImage')) {
+            images[i].parentNode.parentNode.style.display = 'none';
+            btnFavorites.textContent = 'Сбросить';
+         }
+      }
+   }
+
+})
+
+
+function hideBlock() {
+   
+}
+// if (btnFavorites.textContent = 'Сбросить') {
+//    dischargeAll();
+// }
+// function dischargeAll() {
+
+//       btnFavorites.addEventListener('click', () => {
+//          for (let i = 0; i < images.length; i++) {
+//             images[i].parentNode.parentNode.style.display = 'block';
+//             images[i].src = '/img/star.png';
+//          }
+//       })
+
+   
+// }
+
